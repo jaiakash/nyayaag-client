@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/widget/AppBar.dart';
+import 'package:nyayaag_client/widget/appbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/widget/AppBar.dart';
+import 'package:nyayaag_client/widget/appbar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, required this.title}) : super(key: key);

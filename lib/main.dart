@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import 'package:nyayaag_client/screen/HomePage.dart';
-import 'package:nyayaag_client/screen/LoginPage.dart';
+import 'package:nyayaag_client/screen/homepage.dart';
+import 'package:nyayaag_client/screen/loginpage.dart';
 
 void main() {
   setUrlStrategy(PathUrlStrategy());
