@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/widget/appbar.dart';
+import 'package:nyayaag_client/widget/footer.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, required this.title}) : super(key: key);
@@ -25,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
+      bottomSheet: NyayaagFooterWidget.getFooter(),
     );
   }
 }
