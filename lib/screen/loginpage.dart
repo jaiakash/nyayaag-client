@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             Container(
               child: Image.asset(
-                'login.png',
+                'design/logindesign.png',
               ),
             ),
             Expanded(

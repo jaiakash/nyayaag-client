@@ -7,7 +7,7 @@ class NyayaagAppBarWidget {
       title: SizedBox(
         width: 70,
         height: 80,
-        child: Image.asset('nyayaaglogo.png'),
+        child: Image.asset('logo/nyayaaglogo.png'),
       ),
       actions: <Widget>[
         const SizedBox(width: 20),

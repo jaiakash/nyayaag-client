@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               flex: 0,
               child: Container(
                 child: Image.asset(
-                  'justice.png',
+                  'logo/justicelogo.png',
                   fit: BoxFit.cover,
                 ),
               ),
