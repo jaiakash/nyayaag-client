@@ -17,13 +17,14 @@ class NyayaagApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nyayaag',
       theme: ThemeData(primarySwatch: Colors.green),
+      debugShowCheckedModeBanner: false,
       initialRoute: '/home',
       routes: {
         '/home': (context) =>
             const HomePage(title: 'Nyayaag - Voice of Justice'),
-        '/loginCitizen': (context) =>
+        '/citizen/login': (context) =>
             const LoginPage(title: 'Nyayaa - Citizen Login'),
-        '/loginAdvocate': (context) =>
+        '/advocate/login': (context) =>
             const LoginPage(title: 'Nyayaag - Advocate Login'),
       },
     );
