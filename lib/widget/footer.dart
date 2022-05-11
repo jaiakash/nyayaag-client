@@ -9,18 +9,46 @@ class NyayaagFooterWidget {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: const [
-              Text('Privacy Policy',
-                  style: TextStyle(color: Colors.white38, fontSize: 20)),
-              SizedBox(width: 50),
-              Text('Terms & Conditions',
-                  style: TextStyle(color: Colors.white38, fontSize: 20)),
-              SizedBox(width: 50),
-              Text('Site Map',
-                  style: TextStyle(color: Colors.white38, fontSize: 20)),
-              SizedBox(width: 50),
-              Text('Contact Us',
-                  style: TextStyle(color: Colors.white38, fontSize: 20))
+            children: [
+              OutlinedButton(
+                onPressed: () {
+                  debugPrint('Received click');
+                },
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.white38,
+                ),
+                child: const Text("Privacy Policy"),
+              ),
+              const SizedBox(width: 50),
+              OutlinedButton(
+                onPressed: () {
+                  debugPrint('Received click');
+                },
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.white38,
+                ),
+                child: const Text("Terms & Conditions"),
+              ),
+              const SizedBox(width: 50),
+              OutlinedButton(
+                onPressed: () {
+                  debugPrint('Received click');
+                },
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.white38,
+                ),
+                child: const Text("Site Map"),
+              ),
+              const SizedBox(width: 50),
+              OutlinedButton(
+                onPressed: () {
+                  debugPrint('Received click');
+                },
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.white38,
+                ),
+                child: const Text("Contact us"),
+              ),
             ]),
       ),
     );
