@@ -5,7 +5,7 @@ class NyayaagFooterWidget {
     return Container(
       decoration: const BoxDecoration(color: Colors.black),
       child: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(30.0),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
