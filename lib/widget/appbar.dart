@@ -10,85 +10,85 @@ class NyayaagAppBarWidget {
         child: Image.asset('nyayaaglogo.png'),
       ),
       actions: <Widget>[
-        const SizedBox(width: 10),
-        ElevatedButton(
+        const SizedBox(width: 20),
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
           child: const Text("Home"),
         ),
         const SizedBox(width: 20),
-        ElevatedButton(
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
           child: const Text("Our Services"),
         ),
-        const SizedBox(width: 10),
-        ElevatedButton(
+        const SizedBox(width: 20),
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
           child: const Text("Career"),
         ),
-        const SizedBox(width: 10),
-        ElevatedButton(
+        const SizedBox(width: 20),
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
           child: const Text("Blog"),
         ),
-        const SizedBox(width: 10),
-        ElevatedButton(
+        const SizedBox(width: 20),
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
           child: const Text("Gallery"),
         ),
-        const SizedBox(width: 10),
-        ElevatedButton(
+        const SizedBox(width: 20),
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
           child: const Text("Consult Expert"),
         ),
-        const SizedBox(width: 10),
-        ElevatedButton(
+        const SizedBox(width: 20),
+        TextButton(
           onPressed: () {
             debugPrint('Received click');
           },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green.shade900,
+          style: TextButton.styleFrom(
+              primary: Colors.white,
               fixedSize: const Size(150, 75),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
