@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/responsive.dart';
+import 'package:nyayaag_client/widget/appbar.dart';
+import 'package:nyayaag_client/widget/footer.dart';
 
 class GovtSubsidyPage extends StatefulWidget {
   const GovtSubsidyPage({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class _GovtSubsidyPageState extends State<GovtSubsidyPage> {
   Widget build(context) {
     return SafeArea(
       child: Scaffold(
+        appBar: NyayaagAppBarWidget.getAppBar(),
         backgroundColor: Color.fromARGB(255, 216, 240, 203),
         body: SingleChildScrollView(
           child: Responsive(
@@ -21,6 +24,7 @@ class _GovtSubsidyPageState extends State<GovtSubsidyPage> {
             desktop: _desktopBody(),
           ),
         ),
+        bottomSheet: NyayaagFooterWidget.getFooter(),
       ),
     );
   }
@@ -74,7 +78,7 @@ class _GovtSubsidyPageState extends State<GovtSubsidyPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('supremecourt1.jpg'),
+                                  image: AssetImage('govt_subsidy/supremecourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -122,7 +126,7 @@ class _GovtSubsidyPageState extends State<GovtSubsidyPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('highcourt1.jpg'),
+                                  image: AssetImage('govt_subsidy/highcourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -176,7 +180,7 @@ class _GovtSubsidyPageState extends State<GovtSubsidyPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('districtcourt1.jpg'),
+                                  image: AssetImage('govt_subsidy/districtcourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -224,7 +228,7 @@ class _GovtSubsidyPageState extends State<GovtSubsidyPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('lowercourt1.jpg'),
+                                  image: AssetImage('govt_subsidy/lowercourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'package:nyayaag_client/screen/homepage.dart';
+import 'package:nyayaag_client/screen/litigation_cases.dart';
 import 'package:nyayaag_client/screen/loginpage.dart';
 
 void main() {
@@ -26,6 +27,7 @@ class NyayaagApp extends StatelessWidget {
             const LoginPage(title: 'Nyayaa - Citizen Login'),
         '/advocate/login': (context) =>
             const LoginPage(title: 'Nyayaag - Advocate Login'),
+        '/litigationcases': (context) => const LitigationCasesPage(),
       },
     );
   }
