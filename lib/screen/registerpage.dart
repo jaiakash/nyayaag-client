@@ -126,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           hint: _userTypeValue == ""
                               ? const Text('Please choose type of user')
                               : Text(_userTypeValue),
-                          items: <String>[' student', ' advocate', ' citizen']
+                          items: <String>['student', 'advocate', 'citizen']
                               .map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
