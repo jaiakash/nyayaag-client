@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:nyayaag_client/screen/homepage.dart';
@@ -10,7 +9,6 @@ import 'package:nyayaag_client/screen/details/student_details.dart';
 import 'package:nyayaag_client/screen/details/advocate_details.dart';
 
 void main() async {
-  setUrlStrategy(PathUrlStrategy());
   await dotenv.load(fileName: ".env");
   runApp(const NyayaagApp());
 }
