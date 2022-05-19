@@ -24,8 +24,10 @@ class NyayaagApp extends StatelessWidget {
       title: 'Nyayaag',
       theme: ThemeData(primarySwatch: Colors.green),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
+        '/': (context) =>
+            const HomePage(title: 'Nyayaag - Voice of Justice'),
         '/home': (context) =>
             const HomePage(title: 'Nyayaag - Voice of Justice'),
         '/register': (context) =>
