@@ -85,7 +85,8 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('supremecourt1.jpg'),
+                                  image:
+                                      AssetImage('services/supremecourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -133,7 +134,7 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('highcourt1.jpg'),
+                                  image: AssetImage('services/highcourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -187,7 +188,8 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('districtcourt1.jpg'),
+                                  image:
+                                      AssetImage('services/districtcourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -235,7 +237,7 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('lowercourt1.jpg'),
+                                  image: AssetImage('services/lowercourt1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -262,14 +264,6 @@ class _OurServicesPageState extends State<OurServicesPage> {
               ),
             ],
           ),
-          const SizedBox(height: 60),
-          ElevatedButton(
-              child: const Text('Consult Expert',
-                  style: TextStyle(fontSize: 20.0)),
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFF46920F),
-                  padding: const EdgeInsets.all(20.0))),
           const SizedBox(height: 50),
           const Divider(
             height: 20,
@@ -317,7 +311,8 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('propertypersonal1.jpg'),
+                                  image: AssetImage(
+                                      'services/propertypersonal1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -371,7 +366,8 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('intellectual1.jpg'),
+                                  image:
+                                      AssetImage('services/intellectual1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -424,7 +420,7 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('ngo1.jpeg'),
+                                  image: AssetImage('services/ngo1.jpeg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -484,7 +480,7 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('business1.png'),
+                                  image: AssetImage('services/business1.png'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -538,7 +534,8 @@ class _OurServicesPageState extends State<OurServicesPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage('govtsubsidy1.jpg'),
+                                  image:
+                                      AssetImage('services/govtsubsidy1.jpg'),
                                   fit: BoxFit.fill))),
                     ),
                     Padding(
@@ -565,14 +562,6 @@ class _OurServicesPageState extends State<OurServicesPage> {
               ),
             ],
           ),
-          const SizedBox(height: 60),
-          ElevatedButton(
-              child: const Text('Consult Expert',
-                  style: TextStyle(fontSize: 20.0)),
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFF46920F),
-                  padding: const EdgeInsets.all(20.0))),
           const SizedBox(height: 150),
         ],
       ),
