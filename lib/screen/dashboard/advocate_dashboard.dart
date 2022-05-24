@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/screen/dashboard/blogs.dart';
+import 'package:nyayaag_client/screen/dashboard/clientBook.dart';
 import 'package:nyayaag_client/screen/dashboard/uploadDocs.dart';
 import 'package:nyayaag_client/widget/appbar.dart';
 import 'package:nyayaag_client/widget/footer.dart';
@@ -80,27 +81,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                             child: Text('Profile'),
                           )
                         : _selectedIndex == 1
-                            ? ListView(
-                                children: [
-                                  for (int count
-                                      in List.generate(5, (index) => index + 1))
-                                    ListTile(
-                                      title: Text('List item $count'),
-                                      subtitle: Text('Secondary text'),
-                                      leading: Icon(Icons.label),
-                                      selected: count == groupValue,
-                                      trailing: Radio(
-                                        value: count,
-                                        groupValue: groupValue,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            groupValue = value.hashCode;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                ],
-                              )
+                            ? clientBook(context)
                             : _selectedIndex == 2
                                 ? const Center(
                                     child: Text('Career'),
