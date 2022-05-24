@@ -15,6 +15,7 @@ class AdvocateDashboard extends StatefulWidget {
 
 class _AdvocateDashboardState extends State<AdvocateDashboard> {
   int _selectedIndex = 0;
+  int groupValue = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -79,16 +80,34 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                             child: Text('Profile'),
                           )
                         : _selectedIndex == 1
-                            ? const Center(
-                                child: Text('Client Book'),
+                            ? ListView(
+                                children: [
+                                  for (int count
+                                      in List.generate(5, (index) => index + 1))
+                                    ListTile(
+                                      title: Text('List item $count'),
+                                      subtitle: Text('Secondary text'),
+                                      leading: Icon(Icons.label),
+                                      selected: count == groupValue,
+                                      trailing: Radio(
+                                        value: count,
+                                        groupValue: groupValue,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            groupValue = value.hashCode;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                ],
                               )
                             : _selectedIndex == 2
-                            ? const Center(
-                                child: Text('Career'),
-                              )
-                            : _selectedIndex == 3
-                                ? uploadDocs()
-                                : blogs()),
+                                ? const Center(
+                                    child: Text('Career'),
+                                  )
+                                : _selectedIndex == 3
+                                    ? uploadDocs()
+                                    : blogs()),
               ),
             )
           ],
