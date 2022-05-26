@@ -16,9 +16,9 @@ class Update {
         'Course': course,
         'CourseDuration': duration,
         'address': address,
-        'pincode': pincode
+        'pincode': pincode,
+        'userID': session
       };
-      dio.options.headers["session"] = session;
       Response response = await dio
           .post(dotenv.env['BACKEND_URL']! + '/student/update', data: userData);
       return response.statusCode;
@@ -28,7 +28,39 @@ class Update {
     return 0;
   }
 
-  static Future<int?> advocate(
+  static Future<int?> advocatepersonal(
+      String salutation,
+      String firstName,
+      String middleName,
+      String lastName,
+      String gender,
+      String emailAddress,
+      String dob,
+      String phoneNo) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? session = prefs.getString('session');
+      var userData = {
+        'salutation': salutation,
+        'firstName': firstName,
+        'middleName': middleName,
+        'lastName': lastName,
+        'gender': gender,
+        'emailAddress': emailAddress,
+        'DOB': dob,
+        'phoneNo': phoneNo,
+        'userID': session
+      };
+      return (await dio.post(dotenv.env['BACKEND_URL']! + '/advocate/updatePersonalDetails',
+              data: userData))
+          .statusCode;
+    } catch (e) {
+      print(e);
+    }
+    return 0;
+  }
+
+  static Future<int?> advocatebar(
       String state,
       String district,
       String barCouncilNumber,
@@ -37,6 +69,8 @@ class Update {
       String officeAddress,
       String pinCode) async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? session = prefs.getString('session');
       var userData = {
         'state': state,
         'district': district,
@@ -45,8 +79,9 @@ class Update {
         'specialization': specialization,
         'officeAddress': officeAddress,
         'pinCode': pinCode,
+        'userID': session
       };
-      return (await dio.post(dotenv.env['BACKEND_URL']! + '/advocate/update',
+      return (await dio.post(dotenv.env['BACKEND_URL']! + '/advocate/updateAdvocateBarDetails',
               data: userData))
           .statusCode;
     } catch (e) {
