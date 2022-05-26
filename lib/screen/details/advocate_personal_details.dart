@@ -4,23 +4,25 @@ import 'package:nyayaag_client/widget/footer.dart';
 
 import 'package:nyayaag_client/controllers/update.dart' as update_controller;
 
-class AdvocateUpdate extends StatefulWidget {
-  const AdvocateUpdate({Key? key, required this.title}) : super(key: key);
+class AdvocatePersonalUpdate extends StatefulWidget {
+  const AdvocatePersonalUpdate({Key? key, required this.title})
+      : super(key: key);
 
   final String title;
 
   @override
-  State<AdvocateUpdate> createState() => _AdvocateUpdateState();
+  State<AdvocatePersonalUpdate> createState() => _AdvocatePersonalUpdateState();
 }
 
-class _AdvocateUpdateState extends State<AdvocateUpdate> {
-  TextEditingController stateController = TextEditingController();
-  TextEditingController districtController = TextEditingController();
-  TextEditingController barnoController = TextEditingController();
-  TextEditingController areaofpractiseController = TextEditingController();
-  TextEditingController specializationController = TextEditingController();
-  TextEditingController officeaddressController = TextEditingController();
-  TextEditingController pincodeController = TextEditingController();
+class _AdvocatePersonalUpdateState extends State<AdvocatePersonalUpdate> {
+  TextEditingController salutationController = TextEditingController();
+  TextEditingController firstController = TextEditingController();
+  TextEditingController middleController = TextEditingController();
+  TextEditingController lastController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController emailaddressController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   final snackBarSuccess = const SnackBar(
     content: Text('Update Successful'),
@@ -77,74 +79,83 @@ class _AdvocateUpdateState extends State<AdvocateUpdate> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         TextField(
-                          controller: stateController,
+                          controller: salutationController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'State',
+                            labelText: 'Salutation',
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextField(
-                          controller: districtController,
+                          controller: firstController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'District',
+                            labelText: 'First Name',
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextField(
-                          controller: barnoController,
+                          controller: middleController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Bar Council Number',
+                            labelText: 'Middle Name',
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextField(
-                          controller: areaofpractiseController,
+                          controller: lastController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Area Of Practise',
+                            labelText: 'Last Name',
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextField(
-                          controller: specializationController,
+                          controller: genderController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Specialization',
+                            labelText: 'Gender',
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextField(
-                          controller: officeaddressController,
+                          controller: emailaddressController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Office Address',
+                            labelText: 'Email Address',
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextField(
-                          controller: pincodeController,
+                          controller: dobController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Pincode',
+                            labelText: 'Date of Birth',
                           ),
                         ),
+                        const SizedBox(height: 10),
+                        TextField(
+                          controller: phoneController,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Phone Number',
+                          ),
+                        )
                       ],
                     ),
                   ),
                   const SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      update_controller.Update.advocate(
-                              stateController.text,
-                              districtController.text,
-                              barnoController.text,
-                              areaofpractiseController.text,
-                              specializationController.text,
-                              officeaddressController.text,
-                              pincodeController.text)
+                      update_controller.Update.advocatepersonal(
+                              salutationController.text,
+                              firstController.text,
+                              middleController.text,
+                              lastController.text,
+                              genderController.text,
+                              emailaddressController.text,
+                              dobController.text,
+                              phoneController.text)
                           .then((response) {
                         if (response == 200) {
                           ScaffoldMessenger.of(context)

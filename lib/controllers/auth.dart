@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class Auth {
   static var dio = Dio();
@@ -30,8 +32,13 @@ class Auth {
 
   static Future<int?> loginUser(String email, String password) async {
     try {
-      var response = await dio.post(dotenv.env['BACKEND_URL']! + '/auth/login',
+      Response response = await dio.post(
+          dotenv.env['BACKEND_URL']! + '/auth/login',
           data: {'username': email, 'password': password});
+
+      final prefs = await SharedPreferences.getInstance();
+      String session = json.encode(response.data['session']);
+      await prefs.setString('session', session);
 
       return response.statusCode;
     } catch (e) {

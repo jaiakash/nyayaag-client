@@ -422,14 +422,6 @@ class _NgosPageState extends State<NgosPage> {
               ),
             ],
           ),
-          const SizedBox(height: 60),
-          ElevatedButton(
-              child: const Text('Consult Expert',
-                  style: TextStyle(fontSize: 20.0)),
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF46920F),
-                  padding: const EdgeInsets.all(20.0))),
           const SizedBox(height: 150),
         ],
       ),
