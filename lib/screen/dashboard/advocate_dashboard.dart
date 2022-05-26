@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/screen/dashboard/blogs.dart';
+import 'package:nyayaag_client/screen/dashboard/clientBook.dart';
 import 'package:nyayaag_client/screen/dashboard/uploadDocs.dart';
 import 'package:nyayaag_client/widget/appbar.dart';
 import 'package:nyayaag_client/widget/footer.dart';
-
-import 'package:nyayaag_client/controllers/update.dart' as update_controller;
 
 class AdvocateDashboard extends StatefulWidget {
   const AdvocateDashboard({Key? key, required this.title}) : super(key: key);
@@ -17,6 +16,7 @@ class AdvocateDashboard extends StatefulWidget {
 
 class _AdvocateDashboardState extends State<AdvocateDashboard> {
   int _selectedIndex = 0;
+  int groupValue = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -48,20 +48,24 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
               labelType: NavigationRailLabelType.none,
               destinations: const <NavigationRailDestination>[
                 NavigationRailDestination(
+                  icon: Icon(Icons.portrait),
+                  label: Text('Profile'),
+                ),
+                NavigationRailDestination(
                   icon: Icon(Icons.auto_stories_outlined),
+                  label: Text('Client Book'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.work),
+                  label: Text('Career'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.local_library),
                   label: Text('Library'),
                 ),
                 NavigationRailDestination(
-                  icon: Icon(Icons.business_center_outlined),
-                  label: Text('Careers'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.book),
+                  icon: Icon(Icons.bookmark),
                   label: Text('Blogs'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.upload_file_outlined),
-                  label: Text('Upload'),
                 ),
               ],
             ),
@@ -74,15 +78,17 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                         color: Color.fromARGB(255, 176, 198, 146)),
                     child: _selectedIndex == 0
                         ? const Center(
-                            child: Text('Hi'),
+                            child: Text('Profile'),
                           )
                         : _selectedIndex == 1
-                            ? const Center(
-                                child: Text('Yo'),
-                              )
+                            ? clientBook(context)
                             : _selectedIndex == 2
-                                ? blogs()
-                                : uploadDocs()),
+                                ? const Center(
+                                    child: Text('Career'),
+                                  )
+                                : _selectedIndex == 3
+                                    ? uploadDocs()
+                                    : blogs()),
               ),
             )
           ],

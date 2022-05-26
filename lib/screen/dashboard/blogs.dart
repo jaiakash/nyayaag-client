@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/widget/appbar.dart';
-import 'package:nyayaag_client/widget/footer.dart';
-
-import 'package:nyayaag_client/controllers/update.dart' as update_controller;
 
 Widget blogs() {
   return Padding(

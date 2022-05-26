@@ -1,14 +1,7 @@
-import 'dart:html';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/widget/appbar.dart';
-import 'package:nyayaag_client/widget/footer.dart';
-
-import 'package:nyayaag_client/controllers/update.dart' as update_controller;
 
 Widget uploadDocs() {
-  FilePickerResult? result;
   return Padding(
     padding: const EdgeInsets.all(30.0),
     child: Column(
