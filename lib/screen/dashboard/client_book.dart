@@ -13,7 +13,7 @@ Widget clientBook(BuildContext context) {
   );
   // TODO Add the for loop mapper
   advocate_controller.Advocate.viewClients().then((response) {
-    if (1>2) {
+    if (1 > 2) {
       ScaffoldMessenger.of(context).showSnackBar(snackBarSuccess);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(snackBarFailed);
@@ -24,8 +24,11 @@ Widget clientBook(BuildContext context) {
       children: [
         Container(
           decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(

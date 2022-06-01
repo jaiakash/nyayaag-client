@@ -7,14 +7,16 @@ class Advocate {
   static var dio = Dio();
   static Future<List<dynamic>?> viewClients() async {
     try {
-       final prefs = await SharedPreferences.getInstance();
-        final String? session = prefs.getString('session');
-        var userData = {
-        'userID': session
-      };
-      Response response =
-          await dio.post(dotenv.env['BACKEND_URL']! + '/advocate/viewClients',data : userData);
-      List<dynamic> clients = json.decode(response.data['data']);
+      final prefs = await SharedPreferences.getInstance();
+      final String? session = prefs.getString('session');
+      var userData = {'userID': session};
+      Response response = await dio.post(
+          dotenv.env['BACKEND_URL']! + '/advocate/viewClients',
+          data: userData);
+      var clients = response.data['data'];
+      for (var v in clients) {
+        print(v);
+      }
       if (response.statusCode == 200) {
         return clients;
       }
