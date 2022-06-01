@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,6 +11,27 @@ class Advocate {
       var userData = {'userID': session};
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/advocate/viewClients',
+          data: userData);
+      var clients = response.data['data'];
+      for (var v in clients) {
+        print(v);
+      }
+      if (response.statusCode == 200) {
+        return clients;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  static Future<List<dynamic>?> caseReminder() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? session = prefs.getString('session');
+      var userData = {'userID': session};
+      Response response = await dio.post(
+          dotenv.env['BACKEND_URL']! + '/advocate/caseReminder',
           data: userData);
       var clients = response.data['data'];
       for (var v in clients) {
