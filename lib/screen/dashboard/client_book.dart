@@ -14,9 +14,9 @@ class ClientBook extends StatefulWidget {
 class _ClientBook extends State<ClientBook> {
   bool fetched = false;
   List<DataRow> clientsRows = [];
+  List<dynamic> clients = [];
   @override
   Widget build(BuildContext context) {
-    List<dynamic> clients = [];
     const snackBarSuccess = SnackBar(
       content: Text('Fetch successful'),
       backgroundColor: Colors.green,
@@ -70,19 +70,131 @@ class _ClientBook extends State<ClientBook> {
       ];
     }
 
+    Wrap _addClientWrap() {
+      TextEditingController nameController = TextEditingController();
+      TextEditingController contactController = TextEditingController();
+      TextEditingController addressController = TextEditingController();
+      TextEditingController nexthearingdateController = TextEditingController();
+      TextEditingController casetypeController = TextEditingController();
+      TextEditingController courtcomplexController = TextEditingController();
+      TextEditingController casenumberController = TextEditingController();
+      TextEditingController caseyearController = TextEditingController();
+      TextEditingController iadetailsController = TextEditingController();
+      return Wrap(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15)),
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Client Name',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: contactController,
+                        decoration: const InputDecoration(
+                          labelText: 'Contact Number',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: addressController,
+                        decoration: const InputDecoration(
+                          labelText: 'Address',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: nexthearingdateController,
+                        decoration: const InputDecoration(
+                          labelText: 'Next Hearing Date',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: courtcomplexController,
+                        decoration: const InputDecoration(
+                          labelText: 'Court Complex',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: casetypeController,
+                        decoration: const InputDecoration(
+                          labelText: 'Case Type',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: casenumberController,
+                        decoration: const InputDecoration(
+                          labelText: 'Case Number',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: caseyearController,
+                        decoration: const InputDecoration(
+                          labelText: 'Case Year',
+                        ),
+                      ),
+                      TextFormField(
+                        controller: iadetailsController,
+                        decoration: const InputDecoration(
+                          labelText: 'IA Details',
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      ElevatedButton(
+                          onPressed: () {
+                            advocate_controller.Advocate.addclient(
+                                    nameController.text,
+                                    contactController.text,
+                                    addressController.text,
+                                    nexthearingdateController.text,
+                                    courtcomplexController.text,
+                                    casetypeController.text,
+                                    casenumberController.text,
+                                    caseyearController.text,
+                                    iadetailsController.text)
+                                .then((response) {
+                              if (response == 200) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBarSuccess);
+                              } else {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBarFailed);
+                              }
+                              Navigator.pop(context);
+                            });
+                          },
+                          child: const Text('Add Client'))
+                    ]),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
     List<DataRow> _createClientRows() {
-      print(clients.length);
       for (int i = 0; i < clients.length; i++) {
         DataRow tmp = DataRow(cells: [
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address'])),
-          DataCell(Text(clients[i]['address']))
+          DataCell(Text(clients[i]['clientName'].toString())),
+          DataCell(Text(clients[i]['contactNumber'].toString())),
+          DataCell(Text(clients[i]['address'].toString())),
+          DataCell(Text(clients[i]['nextHearingDate'].toString())),
+          DataCell(Text(clients[i]['courtComplex'].toString())),
+          DataCell(Text(clients[i]['caseType'].toString())),
+          DataCell(Text(clients[i]['caseNumber'].toString())),
+          DataCell(Text(clients[i]['caseYear'].toString())),
+          DataCell(Text(clients[i]['IAdetails'].toString()))
         ]);
         clientsRows.add(tmp);
       }
@@ -102,216 +214,54 @@ class _ClientBook extends State<ClientBook> {
       return clientsRows.isEmpty ? emptyRow : clientsRows;
     }
 
-    return !fetched
-        ? Center()
-        : Center(
-            child: Column(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        ElevatedButton(
-                          child: const Text(
-                            'Add New Client',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          onPressed: () {
-                            TextEditingController nameController =
-                                TextEditingController();
-                            TextEditingController contactController =
-                                TextEditingController();
-                            TextEditingController addressController =
-                                TextEditingController();
-                            TextEditingController nexthearingdateController =
-                                TextEditingController();
-                            TextEditingController casetypeController =
-                                TextEditingController();
-                            TextEditingController courtcomplexController =
-                                TextEditingController();
-                            TextEditingController casenumberController =
-                                TextEditingController();
-                            TextEditingController caseyearController =
-                                TextEditingController();
-                            TextEditingController iadetailsController =
-                                TextEditingController();
-                            showModalBottomSheet(
-                                constraints: const BoxConstraints(
-                                    maxWidth: double.infinity),
-                                backgroundColor:
-                                    const Color.fromARGB(255, 227, 255, 188),
-                                isScrollControlled: true,
-                                context: context,
-                                builder: (context) {
-                                  return Wrap(
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(15),
-                                                topRight: Radius.circular(15)),
-                                          ),
-                                          child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10,
-                                                      horizontal: 30),
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    TextFormField(
-                                                      controller:
-                                                          nameController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText:
-                                                            'Client Name',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          contactController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText:
-                                                            'Contact Number',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          addressController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText: 'Address',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          nexthearingdateController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText:
-                                                            'Next Hearing Date',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          courtcomplexController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText:
-                                                            'Court Complex',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          casetypeController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText: 'Case Type',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          casenumberController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText:
-                                                            'Case Number',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          caseyearController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText: 'Case Year',
-                                                      ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller:
-                                                          iadetailsController,
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        labelText: 'IA Details',
-                                                      ),
-                                                    ),
-                                                    const SizedBox(height: 15),
-                                                    ElevatedButton(
-                                                        onPressed: () {
-                                                          advocate_controller.Advocate.addclient(
-                                                                  nameController
-                                                                      .text,
-                                                                  contactController
-                                                                      .text,
-                                                                  addressController
-                                                                      .text,
-                                                                  nexthearingdateController
-                                                                      .text,
-                                                                  courtcomplexController
-                                                                      .text,
-                                                                  casetypeController
-                                                                      .text,
-                                                                  casenumberController
-                                                                      .text,
-                                                                  caseyearController
-                                                                      .text,
-                                                                  iadetailsController
-                                                                      .text)
-                                                              .then((response) {
-                                                            if (response ==
-                                                                200) {
-                                                              ScaffoldMessenger
-                                                                      .of(
-                                                                          context)
-                                                                  .showSnackBar(
-                                                                      snackBarSuccess);
-                                                            } else {
-                                                              ScaffoldMessenger
-                                                                      .of(
-                                                                          context)
-                                                                  .showSnackBar(
-                                                                      snackBarFailed);
-                                                            }
-                                                          });
-                                                        },
-                                                        child: const Text(
-                                                            'Add Client'))
-                                                  ])),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFF46920F),
-                            padding: const EdgeInsets.all(20.0),
-                          ),
-                        ),
-                        DataTable(
-                          columns: _createClientColumns(),
-                          rows: _createClientRows(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+    return Center(
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
             ),
-          );
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    child: const Text(
+                      'Add New Client',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                          constraints:
+                              const BoxConstraints(maxWidth: double.infinity),
+                          backgroundColor:
+                              const Color.fromARGB(255, 227, 255, 188),
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return _addClientWrap();
+                          });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: const Color(0xFF46920F),
+                      padding: const EdgeInsets.all(20.0),
+                    ),
+                  ),
+                  DataTable(
+                    columns: _createClientColumns(),
+                    rows: _createClientRows(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
