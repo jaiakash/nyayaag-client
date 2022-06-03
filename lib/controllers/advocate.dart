@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,10 +14,8 @@ class Advocate {
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/advocate/viewClients',
           data: userData);
-      var clients = response.data['data'];
-      for (var v in clients) {
-        print(v);
-      }
+      // print(response.data['data']);
+      List<dynamic> clients = response.data['data'];
       if (response.statusCode == 200) {
         return clients;
       }

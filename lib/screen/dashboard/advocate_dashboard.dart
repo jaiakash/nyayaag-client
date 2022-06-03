@@ -16,7 +16,7 @@ class AdvocateDashboard extends StatefulWidget {
 }
 
 class _AdvocateDashboardState extends State<AdvocateDashboard> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
   int groupValue = 1;
 
   @override
@@ -86,7 +86,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                           child: Text('Profile'),
                         )
                       : _selectedIndex == 1
-                          ? clientBook(context)
+                          ? const ClientBook()
                           : _selectedIndex == 2
                               ? const PendingCases()
                               : _selectedIndex == 3
