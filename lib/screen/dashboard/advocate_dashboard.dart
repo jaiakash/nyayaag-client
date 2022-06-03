@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/screen/dashboard/blogs.dart';
-import 'package:nyayaag_client/screen/dashboard/clientBook.dart';
+import 'package:nyayaag_client/screen/dashboard/client_book.dart';
+import 'package:nyayaag_client/screen/dashboard/pending_cases.dart';
 import 'package:nyayaag_client/screen/dashboard/uploadDocs.dart';
 import 'package:nyayaag_client/widget/appbar.dart';
 import 'package:nyayaag_client/widget/footer.dart';
@@ -15,7 +16,7 @@ class AdvocateDashboard extends StatefulWidget {
 }
 
 class _AdvocateDashboardState extends State<AdvocateDashboard> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   int groupValue = 1;
 
   @override
@@ -25,7 +26,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
         appBar: AppBar(),
       ),
       body: Container(
-        color: Color.fromARGB(255, 176, 198, 146),
+        color: const Color.fromARGB(255, 176, 198, 146),
         child: Row(
           children: <Widget>[
             NavigationRail(
@@ -56,6 +57,10 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                   label: Text('Client Book'),
                 ),
                 NavigationRailDestination(
+                  icon: Icon(Icons.pending_actions),
+                  label: Text('Pending Cases'),
+                ),
+                NavigationRailDestination(
                   icon: Icon(Icons.work),
                   label: Text('Career'),
                 ),
@@ -74,21 +79,24 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
             Flexible(
               child: SingleChildScrollView(
                 child: Container(
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 176, 198, 146)),
-                    child: _selectedIndex == 0
-                        ? const Center(
-                            child: Text('Profile'),
-                          )
-                        : _selectedIndex == 1
-                            ? clientBook(context)
-                            : _selectedIndex == 2
-                                ? const Center(
-                                    child: Text('Career'),
-                                  )
-                                : _selectedIndex == 3
-                                    ? uploadDocs()
-                                    : blogs()),
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 176, 198, 146)),
+                  child: _selectedIndex == 0
+                      ? const Center(
+                          child: Text('Profile'),
+                        )
+                      : _selectedIndex == 1
+                          ? const ClientBook()
+                          : _selectedIndex == 2
+                              ? const PendingCases()
+                              : _selectedIndex == 3
+                                  ? const Center(
+                                      child: Text('Career'),
+                                    )
+                                  : _selectedIndex == 4
+                                      ? uploadDocs()
+                                      : blogs(),
+                ),
               ),
             )
           ],

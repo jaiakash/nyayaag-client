@@ -96,7 +96,7 @@ class NyayaagAppBarWidget extends StatelessWidget
         const SizedBox(width: 20),
         TextButton(
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/advocate/update/bar');
+            Navigator.pushReplacementNamed(context, '/advocate');
           },
           style: TextButton.styleFrom(
               primary: Colors.white,

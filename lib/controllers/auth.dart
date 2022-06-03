@@ -37,7 +37,7 @@ class Auth {
           data: {'username': email, 'password': password});
 
       final prefs = await SharedPreferences.getInstance();
-      String session = json.encode(response.data['session']);
+      String session = json.encode(response.data['session']['user']);
       await prefs.setString('session', session);
 
       return response.statusCode;
