@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/screen/dashboard/blogs.dart';
+import 'package:nyayaag_client/screen/dashboard/profile.dart';
 import 'package:nyayaag_client/screen/dashboard/client_book.dart';
 import 'package:nyayaag_client/screen/dashboard/pending_cases.dart';
 import 'package:nyayaag_client/screen/dashboard/uploadDocs.dart';
@@ -82,9 +83,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                   decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 176, 198, 146)),
                   child: _selectedIndex == 0
-                      ? const Center(
-                          child: Text('Profile'),
-                        )
+                      ? profile()
                       : _selectedIndex == 1
                           ? const ClientBook()
                           : _selectedIndex == 2
