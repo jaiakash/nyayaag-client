@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/screen/advocatedashboard/profileItem.dart';
+import 'package:nyayaag_client/controllers/advocate.dart'
+    as advocate_controller;
 
-Column profile() => Column(
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
+
+  @override
+  _Profile createState() => _Profile();
+}
+
+class _Profile extends State<Profile> {
+  bool fetched = false;
+  List<dynamic> profile = [];
+  @override
+  Widget build(BuildContext context) {
+    advocate_controller.Advocate.viewProfile().then((response) {
+      print(response![0]['personalDetails']);
+      if (!fetched) {
+        setState(() {
+          profile = response;
+          fetched = true;
+        });
+      }
+    });
+    return Column(
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 150.0, bottom: 30.0),
@@ -29,25 +52,25 @@ Column profile() => Column(
                     horizontal: 30.0, vertical: 15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
-                      'Mr John Doe',
-                      style: TextStyle(
+                      profile[0]['personalDetails']['firstName'],
+                      style: const TextStyle(
                           fontSize: 24,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 5),
-                    Text('johndoe@gmail.com',
-                        style: TextStyle(
+                    const SizedBox(height: 5),
+                    Text(profile[0]['personalDetails']['emailAddress'],
+                        style: const TextStyle(
                           fontSize: 18,
                         )),
-                    SizedBox(height: 5),
-                    Text('9999999999',
-                        style: TextStyle(
+                    const SizedBox(height: 5),
+                    Text(profile[0]['personalDetails']['phoneNo'],
+                        style: const TextStyle(
                           fontSize: 18,
                         )),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                   ],
                 ),
               ),
@@ -62,7 +85,7 @@ Column profile() => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Card(
-                color: Color.fromARGB(255, 209, 235, 174),
+                color: const Color.fromARGB(255, 209, 235, 174),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 40.0, vertical: 20.0),
@@ -72,8 +95,8 @@ Column profile() => Column(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Area of Practice: ',
                           style: TextStyle(
                             fontSize: 18,
@@ -81,19 +104,20 @@ Column profile() => Column(
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         SizedBox(
                           width: 300,
                           child: Text(
-                            'Corporate Law',
-                            style: TextStyle(
+                            profile[0]['advocateBarDetails']['areaOfPractice']
+                                .toString(),
+                            style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
-                        Text(
+                        const SizedBox(height: 20),
+                        const Text(
                           'Specialization: ',
                           style: TextStyle(
                             fontSize: 18,
@@ -101,12 +125,13 @@ Column profile() => Column(
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         SizedBox(
                           width: 300,
                           child: Text(
-                            'Corporate Law',
-                            style: TextStyle(
+                            profile[0]['advocateBarDetails']['specialization']
+                                .toString(),
+                            style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
                             ),
@@ -119,7 +144,7 @@ Column profile() => Column(
               ),
               const SizedBox(width: 40),
               Card(
-                color: Color.fromARGB(255, 209, 235, 174),
+                color: const Color.fromARGB(255, 209, 235, 174),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 40.0, vertical: 20.0),
@@ -129,8 +154,8 @@ Column profile() => Column(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Advocate Bar Details: ',
                           style: TextStyle(
                             fontSize: 20,
@@ -138,8 +163,8 @@ Column profile() => Column(
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 15),
-                        Text(
+                        const SizedBox(height: 15),
+                        const Text(
                           'District & State: ',
                           style: TextStyle(
                             fontSize: 18,
@@ -147,8 +172,8 @@ Column profile() => Column(
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 5),
-                        SizedBox(
+                        const SizedBox(height: 5),
+                        const SizedBox(
                           child: Text(
                             'Tiruchirappalli, Tamil Nadu',
                             style: TextStyle(
@@ -157,8 +182,8 @@ Column profile() => Column(
                             ),
                           ),
                         ),
-                        SizedBox(height: 15),
-                        Text(
+                        const SizedBox(height: 15),
+                        const Text(
                           'Bar Code Number: ',
                           style: TextStyle(
                             fontSize: 18,
@@ -166,11 +191,12 @@ Column profile() => Column(
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         SizedBox(
                           child: Text(
-                            '12345',
-                            style: TextStyle(
+                            profile[0]['advocateBarDetails']
+                                ['barCouncilNumber'],
+                            style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
                             ),
@@ -183,7 +209,7 @@ Column profile() => Column(
               ),
               const SizedBox(width: 40),
               Card(
-                color: Color.fromARGB(255, 209, 235, 174),
+                color: const Color.fromARGB(255, 209, 235, 174),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 40.0, vertical: 20.0),
@@ -193,8 +219,8 @@ Column profile() => Column(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Office Address: ',
                           style: TextStyle(
                             fontSize: 18,
@@ -202,11 +228,21 @@ Column profile() => Column(
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         SizedBox(
                           child: Text(
-                            '37PQ+M3Q, High Ct Rd, Parry\'s Corner, George Town, Chennai, Tamil Nadu 600108',
-                            style: TextStyle(
+                            profile[0]['advocateBarDetails']['officeAddress'],
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        SizedBox(
+                          child: Text(
+                            profile[0]['advocateBarDetails']['pinCode'],
+                            style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
                             ),
@@ -239,3 +275,5 @@ Column profile() => Column(
         const SizedBox(height: 60)
       ],
     );
+  }
+}

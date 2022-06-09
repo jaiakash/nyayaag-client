@@ -12,7 +12,7 @@ class Advocate {
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/advocate/viewClients',
           data: userData);
-      // print(response.data['data']);
+      //print(response.data['data'].runtimeType);
       List<dynamic> clients = response.data['data'];
       if (response.statusCode == 200) {
         return clients;
@@ -32,9 +32,7 @@ class Advocate {
           dotenv.env['BACKEND_URL']! + '/advocate/caseReminder',
           data: userData);
       List<dynamic> clients = response.data['data'];
-      if (response.statusCode == 200) {
-        return clients;
-      }
+      //print(response.data['data'].runtimeType);
       if (response.statusCode == 200) {
         return clients;
       }
@@ -52,12 +50,12 @@ class Advocate {
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/advocate/profile',
           data: userData);
-      List<dynamic> clients = response.data['data'];
+      List<dynamic> profile = response.data['data'];
+      //List<dynamic> personal = response.data['data']['personalDetails'];
+      //List<dynamic> bar = response.data['data']['advocateBarDetails'];
+      //print(personal);
       if (response.statusCode == 200) {
-        return clients;
-      }
-      if (response.statusCode == 200) {
-        return clients;
+        return profile;
       }
     } catch (e) {
       print(e);

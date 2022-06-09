@@ -17,7 +17,7 @@ class AdvocateDashboard extends StatefulWidget {
 }
 
 class _AdvocateDashboardState extends State<AdvocateDashboard> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   int groupValue = 1;
 
   @override
@@ -83,7 +83,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                   decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 176, 198, 146)),
                   child: _selectedIndex == 0
-                      ? profile()
+                      ? const Profile()
                       : _selectedIndex == 1
                           ? const ClientBook()
                           : _selectedIndex == 2
