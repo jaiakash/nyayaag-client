@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/screen/dashboard/blogs.dart';
-import 'package:nyayaag_client/screen/dashboard/profile.dart';
-import 'package:nyayaag_client/screen/dashboard/client_book.dart';
-import 'package:nyayaag_client/screen/dashboard/pending_cases.dart';
-import 'package:nyayaag_client/screen/dashboard/uploadDocs.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/blogs.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/profile.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/client_book.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/pending_cases.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/uploadDocs.dart';
 import 'package:nyayaag_client/widget/appbar.dart';
 import 'package:nyayaag_client/widget/footer.dart';
 

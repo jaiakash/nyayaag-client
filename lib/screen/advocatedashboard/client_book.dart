@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nyayaag_client/controllers/advocate.dart'
     as advocate_controller;
+import 'package:intl/intl.dart';
 
 class ClientBook extends StatefulWidget {
   const ClientBook({Key? key}) : super(key: key);
@@ -13,6 +15,15 @@ class _ClientBook extends State<ClientBook> {
   bool fetched = false;
   List<DataRow> clientsRows = [];
   List<dynamic> clients = [];
+  String _courtComplexValue = "";
+  TextEditingController nextHearingDate = TextEditingController();
+
+  @override
+  void initState() {
+    nextHearingDate.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     const snackBarSuccess = SnackBar(
@@ -72,7 +83,6 @@ class _ClientBook extends State<ClientBook> {
       TextEditingController nameController = TextEditingController();
       TextEditingController contactController = TextEditingController();
       TextEditingController addressController = TextEditingController();
-      TextEditingController nexthearingdateController = TextEditingController();
       TextEditingController casetypeController = TextEditingController();
       TextEditingController courtcomplexController = TextEditingController();
       TextEditingController casenumberController = TextEditingController();
@@ -94,57 +104,112 @@ class _ClientBook extends State<ClientBook> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextFormField(
+                      TextField(
                         controller: nameController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.person),
                           labelText: 'Client Name',
                         ),
                       ),
-                      TextFormField(
+                      TextField(
                         controller: contactController,
                         decoration: const InputDecoration(
-                          labelText: 'Contact Number',
-                        ),
+                            labelText: 'Contact Number',
+                            icon: Icon(Icons.contact_page_sharp)),
                       ),
-                      TextFormField(
+                      TextField(
                         controller: addressController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.location_city),
                           labelText: 'Address',
                         ),
                       ),
-                      TextFormField(
-                        controller: nexthearingdateController,
+                      TextField(
+                        controller:
+                            nextHearingDate, //editing controller of this TextField
                         decoration: const InputDecoration(
-                          labelText: 'Next Hearing Date',
-                        ),
+                            icon:
+                                Icon(Icons.calendar_today), //icon of text field
+                            labelText: "Hearing Date" //label text of field
+                            ),
+                        readOnly:
+                            true, //set it true, so that user will not able to edit text
+                        onTap: () async {
+                          DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(
+                                  2000), //DateTime.now() - not to allow to choose before today.
+                              lastDate: DateTime(2101));
+
+                          if (pickedDate != null) {
+                            String formattedDate =
+                                DateFormat('yyyy-MM-dd').format(pickedDate);
+
+                            setState(() {
+                              nextHearingDate.text =
+                                  formattedDate; //set output date to TextField value.
+                            });
+                          } else {
+                            print("Date is not selected");
+                          }
+                        },
                       ),
-                      TextFormField(
-                        controller: courtcomplexController,
-                        decoration: const InputDecoration(
-                          labelText: 'Court Complex',
-                        ),
+                      DropdownButton<String>(
+                        hint: _courtComplexValue == ""
+                            ? const Text('Choose Court Complex')
+                            : Text(_courtComplexValue),
+                        items: <String>[
+                          'Supreme Court',
+                          'High Court',
+                          'District Court'
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          setState(
+                            () {
+                              _courtComplexValue = value!;
+                            },
+                          );
+                        },
                       ),
-                      TextFormField(
+                      TextField(
                         controller: casetypeController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.cases_rounded),
                           labelText: 'Case Type',
                         ),
                       ),
-                      TextFormField(
+                      TextField(
                         controller: casenumberController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.numbers),
                           labelText: 'Case Number',
                         ),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                       ),
-                      TextFormField(
+                      TextField(
                         controller: caseyearController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.calendar_today_outlined),
                           labelText: 'Case Year',
                         ),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                       ),
-                      TextFormField(
+                      TextField(
                         controller: iadetailsController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.key),
                           labelText: 'IA Details',
                         ),
                       ),
@@ -155,7 +220,7 @@ class _ClientBook extends State<ClientBook> {
                                     nameController.text,
                                     contactController.text,
                                     addressController.text,
-                                    nexthearingdateController.text,
+                                    nextHearingDate.text,
                                     courtcomplexController.text,
                                     casetypeController.text,
                                     casenumberController.text,
