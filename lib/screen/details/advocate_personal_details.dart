@@ -160,6 +160,8 @@ class _AdvocatePersonalUpdateState extends State<AdvocatePersonalUpdate> {
                         if (response == 200) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(snackBarSuccess);
+                          Navigator.pushReplacementNamed(
+                              context, '/advocate/update/bar');
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(snackBarFailed);

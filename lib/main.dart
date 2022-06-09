@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:nyayaag_client/screen/dashboard/advocate_dashboard.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/advocate_dashboard.dart';
 
 import 'package:nyayaag_client/screen/homepage.dart';
 import 'package:nyayaag_client/screen/services.dart';

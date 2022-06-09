@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/screen/dashboard/profileItem.dart';
+import 'package:nyayaag_client/screen/advocatedashboard/profileItem.dart';
 
 Column profile() => Column(
       children: [
