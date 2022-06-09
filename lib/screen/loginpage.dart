@@ -97,9 +97,16 @@ class _LoginPageState extends State<LoginPage> {
                       auth_controller.Auth.loginUser(
                               emailController.text, passwordController.text)
                           .then((response) {
-                        if (response == 200) {
+                        if (response![0] == 200) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(snackBarSuccess);
+                          // print(identical(response[1], "\"advocate\""));
+                          if (response[1] == "\"advocate\"") {
+                            Navigator.pushReplacementNamed(
+                                context, '/advocate');
+                          } else if (response[1] == "\"student\"") {
+                            Navigator.pushReplacementNamed(context, '/student');
+                          }
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(snackBarFailed);

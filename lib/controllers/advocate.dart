@@ -31,9 +31,30 @@ class Advocate {
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/advocate/caseReminder',
           data: userData);
-      var clients = response.data['data'];
-      for (var v in clients) {
-        print(v);
+      List<dynamic> clients = response.data['data'];
+      if (response.statusCode == 200) {
+        return clients;
+      }
+      if (response.statusCode == 200) {
+        return clients;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  static Future<List<dynamic>?> viewProfile() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? session = prefs.getString('session');
+      var userData = {'userID': session};
+      Response response = await dio.post(
+          dotenv.env['BACKEND_URL']! + '/advocate/profile',
+          data: userData);
+      List<dynamic> clients = response.data['data'];
+      if (response.statusCode == 200) {
+        return clients;
       }
       if (response.statusCode == 200) {
         return clients;

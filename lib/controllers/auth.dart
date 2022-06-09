@@ -30,7 +30,7 @@ class Auth {
     return 0;
   }
 
-  static Future<int?> loginUser(String email, String password) async {
+  static Future<List?> loginUser(String email, String password) async {
     try {
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/auth/login',
@@ -38,13 +38,14 @@ class Auth {
 
       final prefs = await SharedPreferences.getInstance();
       String session = json.encode(response.data['session']['user']);
+      String userType = json.encode(response.data['userType']);
       await prefs.setString('session', session);
 
-      return response.statusCode;
+      return [response.statusCode, userType];
     } catch (e) {
       print(e);
     }
-    return 0;
+    return null;
   }
 
   static Future<int?> verifyOTP(String email, String otp) async {

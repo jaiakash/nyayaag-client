@@ -13,13 +13,8 @@ class PendingCases extends StatefulWidget {
 class _PendingCases extends State<PendingCases> {
   @override
   Widget build(BuildContext context) {
-    // TODO Add the for loop mapper
     advocate_controller.Advocate.caseReminder().then((response) {
-      /*if (1 > 2) {
-        ScaffoldMessenger.of(context).showSnackBar(snackBarSuccess);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(snackBarFailed);
-      }*/
+      print(response);
     });
 
     CalendarFormat _calendarFormat = CalendarFormat.month;

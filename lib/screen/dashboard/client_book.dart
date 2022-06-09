@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:flutter/material.dart';
 import 'package:nyayaag_client/controllers/advocate.dart'
     as advocate_controller;
@@ -200,15 +198,15 @@ class _ClientBook extends State<ClientBook> {
       }
       List<DataRow> emptyRow = [
         const DataRow(cells: [
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found')),
-          const DataCell(Text('No data found'))
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found')),
+          DataCell(Text('No data found'))
         ])
       ];
       return clientsRows.isEmpty ? emptyRow : clientsRows;
