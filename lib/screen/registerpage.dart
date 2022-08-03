@@ -218,7 +218,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             if (response == 200) {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBarVerifySuccess);
-                              Navigator.pushReplacementNamed(context, '/advocate/update/personal');
+                              Navigator.pushReplacementNamed(context, '/login');
                             } else {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBarFailed);

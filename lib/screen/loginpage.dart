@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                           // print(identical(response[1], "\"advocate\""));
                           if (response[1] == "\"advocate\"") {
                             Navigator.pushReplacementNamed(
-                                context, '/advocate');
+                                context, '/advocate/update/personal');
                           } else if (response[1] == "\"student\"") {
                             Navigator.pushReplacementNamed(context, '/student');
                           }

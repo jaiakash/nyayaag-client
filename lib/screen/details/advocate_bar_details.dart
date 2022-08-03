@@ -149,6 +149,8 @@ class _AdvocateBarUpdateState extends State<AdvocateBarUpdate> {
                         if (response == 200) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(snackBarSuccess);
+                              Navigator.pushReplacementNamed(
+                              context, '/advocate');
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(snackBarFailed);
