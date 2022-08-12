@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:nyayaag_client/screen/advocatedashboard/blogs.dart';
-import 'package:nyayaag_client/screen/advocatedashboard/profile.dart';
-import 'package:nyayaag_client/screen/advocatedashboard/client_book.dart';
-import 'package:nyayaag_client/screen/advocatedashboard/pending_cases.dart';
-import 'package:nyayaag_client/screen/advocatedashboard/uploadDocs.dart';
+import 'package:nyayaag_client/screen/clientdashboard/profile.dart';
+import 'package:nyayaag_client/screen/clientdashboard/advocate_search.dart';
 import 'package:nyayaag_client/widget/appbar.dart';
 import 'package:nyayaag_client/widget/footer.dart';
 
-class AdvocateDashboard extends StatefulWidget {
-  const AdvocateDashboard({Key? key, required this.title}) : super(key: key);
+class ClientDashboard extends StatefulWidget {
+  const ClientDashboard({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<AdvocateDashboard> createState() => _AdvocateDashboardState();
+  State<ClientDashboard> createState() => _ClientDashboardState();
 }
 
-class _AdvocateDashboardState extends State<AdvocateDashboard> {
+class _ClientDashboardState extends State<ClientDashboard> {
   int _selectedIndex = 1;
   int groupValue = 1;
 
@@ -55,23 +52,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.auto_stories_outlined),
-                  label: Text('Client Book'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.pending_actions),
-                  label: Text('Pending Cases'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.work),
-                  label: Text('Career'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.local_library),
-                  label: Text('Library'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.bookmark),
-                  label: Text('Blogs'),
+                  label: Text('Search Advocate'),
                 ),
               ],
             ),
@@ -84,17 +65,7 @@ class _AdvocateDashboardState extends State<AdvocateDashboard> {
                       color: Color.fromARGB(255, 176, 198, 146)),
                   child: _selectedIndex == 0
                       ? const Profile()
-                      : _selectedIndex == 1
-                          ? const ClientBook()
-                          : _selectedIndex == 2
-                              ? const PendingCases()
-                              : _selectedIndex == 3
-                                  ? const Center(
-                                      child: Text('Career'),
-                                    )
-                                  : _selectedIndex == 4
-                                      ? uploadDocs()
-                                      : blogs(),
+                      : const AdvocateSearch(),
                 ),
               ),
             )

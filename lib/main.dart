@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:nyayaag_client/screen/advocatedashboard/main_dashboard.dart';
+import 'package:nyayaag_client/screen/clientdashboard/main_dashboard.dart';
 
 import 'package:nyayaag_client/screen/homepage.dart';
 import 'package:nyayaag_client/screen/services.dart';
@@ -40,7 +41,9 @@ class NyayaagApp extends StatelessWidget {
         '/advocate/update/personal': (context) =>
             const AdvocatePersonalUpdate(title: 'Advocate Personal Update'),
         '/advocate': (context) =>
-            const AdvocateDashboard(title: 'Advocate Dashboard')
+            const AdvocateDashboard(title: 'Advocate Dashboard'),
+        '/client': (context) =>
+            const ClientDashboard(title: 'Client Dashboard')
       },
     );
   }

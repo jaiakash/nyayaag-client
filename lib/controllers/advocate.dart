@@ -50,10 +50,11 @@ class Advocate {
       Response response = await dio.post(
           dotenv.env['BACKEND_URL']! + '/advocate/profile',
           data: userData);
+      print(response.data['data']['personalDetails']);
       List<dynamic> profile = response.data['data'];
-      //List<dynamic> personal = response.data['data']['personalDetails'];
-      //List<dynamic> bar = response.data['data']['advocateBarDetails'];
-      //print(personal);
+      // List<dynamic> personal = response.data['data']['personalDetails'];
+      // List<dynamic> bar = response.data['data']['advocateBarDetails'];
+      // print(personal);
       if (response.statusCode == 200) {
         return profile;
       }
