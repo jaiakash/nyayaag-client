@@ -16,7 +16,7 @@ class _Profile extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     advocate_controller.Advocate.viewProfile().then((response) {
-      print(response![0]['personalDetails']);
+      print(response![0]);
       if (!fetched) {
         setState(() {
           profile = response;
@@ -54,19 +54,19 @@ class _Profile extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      profile[0]['personalDetails']['firstName'],
+                      profile[0]['firstName'] ?? '',
                       style: const TextStyle(
                           fontSize: 24,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 5),
-                    Text(profile[0]['personalDetails']['emailAddress'],
+                    Text(profile[0]['emailAddress'] ?? '',
                         style: const TextStyle(
                           fontSize: 18,
                         )),
                     const SizedBox(height: 5),
-                    Text(profile[0]['personalDetails']['phoneNo'],
+                    Text(profile[0]['phoneNo'] ?? '',
                         style: const TextStyle(
                           fontSize: 18,
                         )),
@@ -108,8 +108,7 @@ class _Profile extends State<Profile> {
                         SizedBox(
                           width: 300,
                           child: Text(
-                            profile[0]['advocateBarDetails']['areaOfPractice']
-                                .toString(),
+                            profile[1]['areaOfPractice'] ?? '',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -129,8 +128,7 @@ class _Profile extends State<Profile> {
                         SizedBox(
                           width: 300,
                           child: Text(
-                            profile[0]['advocateBarDetails']['specialization']
-                                .toString(),
+                            profile[1]['specialization'] ?? '',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -173,10 +171,10 @@ class _Profile extends State<Profile> {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        const SizedBox(
+                        SizedBox(
                           child: Text(
-                            'Tiruchirappalli, Tamil Nadu',
-                            style: TextStyle(
+                            profile[1]['state'] + " " +profile[1]['district'] ?? '',
+                            style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
                             ),
@@ -194,8 +192,7 @@ class _Profile extends State<Profile> {
                         const SizedBox(height: 5),
                         SizedBox(
                           child: Text(
-                            profile[0]['advocateBarDetails']
-                                ['barCouncilNumber'],
+                            profile[1]['barCouncilNumber'] ?? '',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -231,7 +228,7 @@ class _Profile extends State<Profile> {
                         const SizedBox(height: 5),
                         SizedBox(
                           child: Text(
-                            profile[0]['advocateBarDetails']['officeAddress'],
+                            profile[1]['officeAddress'] ?? '',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -241,7 +238,7 @@ class _Profile extends State<Profile> {
                         const SizedBox(height: 5),
                         SizedBox(
                           child: Text(
-                            profile[0]['advocateBarDetails']['pinCode'],
+                            profile[1]['pinCode'] ?? '',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black,
